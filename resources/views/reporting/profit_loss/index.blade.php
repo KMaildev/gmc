@@ -13,9 +13,13 @@
                 </div>
 
                 <div class="table-responsive text-nowrap rowheaders table-scroll outer-wrapper">
+                    <span>
+                        {{ $start_date ?? '' }}
+                        to
+                        {{ $end_date ?? '' }}
+                    </span>
                     <div class="table-responsive text-nowrap rowheaders table-scroll outer-wrapper" role="region"
                         aria-labelledby="HeadersCol" tabindex="0">
-
                         <table class="table-bordered main-table" style="margin-bottom: 10px">
                             {{-- Revenue --}}
                             <thead class="tbbg">
@@ -35,7 +39,7 @@
                                     MMK
                                 </th>
                             </thead>
-                            
+
                             <tbody class="table-border-bottom-0" id="tablecontents">
                                 @php
                                     $all_total_revenue = [];
@@ -79,6 +83,7 @@
                             </tbody>
 
 
+
                             {{-- Cost of Sale --}}
                             <thead class="tbbg">
                                 <th style="background-color: #296166; color: white; text-align: center; width: 1%;">
@@ -113,20 +118,15 @@
 
                                         <td style="text-align: right;">
                                             @php
-                                                $cash_in = $cost_of_sale->cash_books_table->sum('cash_in');
-                                                $bank_in = $cost_of_sale->cash_books_table->sum('bank_in');
-                                                $total_debit = $cash_in + $bank_in;
-                                                
                                                 $cash_out = $cost_of_sale->cash_books_table->sum('cash_out');
                                                 $bank_out = $cost_of_sale->cash_books_table->sum('bank_out');
                                                 $total_credit = $cash_out + $bank_out;
                                                 
-                                                $total_cost_of_sale = $total_debit - $total_credit;
+                                                $total_cost_of_sale = $total_credit;
                                                 echo number_format($total_cost_of_sale, 2);
                                                 $all_total_cost_of_sale[] = $total_cost_of_sale;
                                             @endphp
                                         </td>
-
                                         <td></td>
                                     </tr>
                                 @endforeach
@@ -155,6 +155,7 @@
                                     </td>
                                 </tr>
                             </tbody>
+
 
 
                             {{-- Other Income --}}
@@ -194,12 +195,7 @@
                                                 $cash_in = $other_incomes->cash_books_table->sum('cash_in');
                                                 $bank_in = $other_incomes->cash_books_table->sum('bank_in');
                                                 $total_debit = $cash_in + $bank_in;
-                                                
-                                                $cash_out = $other_incomes->cash_books_table->sum('cash_out');
-                                                $bank_out = $other_incomes->cash_books_table->sum('bank_out');
-                                                $total_credit = $cash_out + $bank_out;
-                                                
-                                                $total_other_incomes = $total_credit - $total_debit;
+                                                $total_other_incomes = $total_debit;
                                                 echo number_format($total_other_incomes, 2);
                                                 $all_total_other_incomes[] = $total_other_incomes;
                                             @endphp
@@ -220,6 +216,8 @@
                                     </td>
                                 </tr>
                             </tbody>
+
+
 
 
                             {{-- Operations Expenses --}}
@@ -256,15 +254,11 @@
 
                                         <td style="text-align: right;">
                                             @php
-                                                $cash_in = $operation_expense->cash_books_table->sum('cash_in');
-                                                $bank_in = $operation_expense->cash_books_table->sum('bank_in');
-                                                $total_debit = $cash_in + $bank_in;
-                                                
                                                 $cash_out = $operation_expense->cash_books_table->sum('cash_out');
                                                 $bank_out = $operation_expense->cash_books_table->sum('bank_out');
                                                 $total_credit = $cash_out + $bank_out;
                                                 
-                                                $total_operation_expense = $total_debit - $total_credit;
+                                                $total_operation_expense = $total_credit;
                                                 echo number_format($total_operation_expense, 2);
                                                 $all_total_operation_expense[] = $total_operation_expense;
                                             @endphp
@@ -285,6 +279,8 @@
                                     </td>
                                 </tr>
                             </tbody>
+
+
 
 
                             {{-- Administration Expenses --}}
@@ -321,15 +317,11 @@
 
                                         <td style="text-align: right;">
                                             @php
-                                                $cash_in = $administration_expense->cash_books_table->sum('cash_in');
-                                                $bank_in = $administration_expense->cash_books_table->sum('bank_in');
-                                                $total_debit = $cash_in + $bank_in;
-                                                
                                                 $cash_out = $administration_expense->cash_books_table->sum('cash_out');
                                                 $bank_out = $administration_expense->cash_books_table->sum('bank_out');
                                                 $total_credit = $cash_out + $bank_out;
                                                 
-                                                $total_administration_expense = $total_debit - $total_credit;
+                                                $total_administration_expense = $total_credit;
                                                 echo number_format($total_administration_expense, 2);
                                                 $all_total_administration_expense[] = $total_administration_expense;
                                             @endphp
@@ -386,15 +378,11 @@
 
                                         <td style="text-align: right;">
                                             @php
-                                                $cash_in = $marketing_expense->cash_books_table->sum('cash_in');
-                                                $bank_in = $marketing_expense->cash_books_table->sum('bank_in');
-                                                $total_debit = $cash_in + $bank_in;
-                                                
                                                 $cash_out = $marketing_expense->cash_books_table->sum('cash_out');
                                                 $bank_out = $marketing_expense->cash_books_table->sum('bank_out');
                                                 $total_credit = $cash_out + $bank_out;
                                                 
-                                                $total_marketing_expense = $total_debit - $total_credit;
+                                                $total_marketing_expense = $total_credit;
                                                 echo number_format($total_marketing_expense, 2);
                                                 $all_total_marketing_expense[] = $total_marketing_expense;
                                             @endphp
@@ -451,15 +439,11 @@
 
                                         <td style="text-align: right;">
                                             @php
-                                                $cash_in = $finance_cost->cash_books_table->sum('cash_in');
-                                                $bank_in = $finance_cost->cash_books_table->sum('bank_in');
-                                                $total_debit = $cash_in + $bank_in;
-                                                
                                                 $cash_out = $finance_cost->cash_books_table->sum('cash_out');
                                                 $bank_out = $finance_cost->cash_books_table->sum('bank_out');
                                                 $total_credit = $cash_out + $bank_out;
                                                 
-                                                $total_finance_cost = $total_debit - $total_credit;
+                                                $total_finance_cost = $total_credit;
                                                 echo number_format($total_finance_cost, 2);
                                                 $all_total_finance_cost[] = $total_finance_cost;
                                             @endphp

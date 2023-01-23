@@ -1,13 +1,13 @@
 <div class="card-title-elements ms-auto">
 
-    <form action="" method="get">
+    <form action="{{ route('profit_loss.index') }}" method="get">
         <div class="input-group">
             <span class="input-group-text">
                 Date Filter
             </span>
-            <input type="text" aria-label="First name" class="form-control date_picker">
-            <input type="text" aria-label="Last name" class="form-control date_picker">
-            <input type="submit" class="btn btn-info">
+            <input type="text" class="form-control date_picker" value="{{ $start_date ?? '' }}" name="start_date">
+            <input type="text" class="form-control date_picker" value="{{ $end_date ?? '' }}" name="end_date">
+            <input type="submit" class="btn btn-info" value="Search">
         </div>
     </form>
 
