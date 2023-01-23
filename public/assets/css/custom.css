@@ -1,0 +1,19 @@
+.form-control-custom {
+    display: block;
+    font-size: 0.9375rem;
+    font-weight: 200;
+    line-height: 1.4;
+    color: #677788;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #d4d8dd;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out
+}
+
+.input-text-center {
+    text-align: center;
+}
