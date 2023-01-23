@@ -13,14 +13,12 @@
                     </div>
                 </div>
 
-
-
                 <div class="table-responsive text-nowrap rowheaders table-scroll outer-wrapper">
                     <div class="table-responsive text-nowrap rowheaders table-scroll outer-wrapper" role="region"
                         aria-labelledby="HeadersCol" tabindex="0">
 
-
                         <table class="table-bordered main-table" style="margin-bottom: 10px">
+
                             {{-- FIXED ASSETS --}}
                             <thead class="tbbg">
                                 <th style="background-color: #296166; color: white; text-align: center; width: 1%;">
@@ -55,15 +53,11 @@
 
                                         <td style="text-align: right;">
                                             @php
-                                                $cash_in = $non_current_asset->cash_books_table->sum('cash_in');
-                                                $bank_in = $non_current_asset->cash_books_table->sum('bank_in');
-                                                $total_debit = $cash_in + $bank_in;
-                                                
                                                 $cash_out = $non_current_asset->cash_books_table->sum('cash_out');
                                                 $bank_out = $non_current_asset->cash_books_table->sum('bank_out');
                                                 $total_credit = $cash_out + $bank_out;
                                                 
-                                                $total_non_current_asset = $total_debit - $total_credit;
+                                                $total_non_current_asset = $total_credit;
                                                 echo number_format($total_non_current_asset, 2);
                                                 $all_total_non_current_asset[] = $total_non_current_asset;
                                             @endphp
@@ -118,15 +112,11 @@
 
                                         <td style="text-align: right;">
                                             @php
-                                                $cash_in = $current_asset->cash_books_table->sum('cash_in');
-                                                $bank_in = $current_asset->cash_books_table->sum('bank_in');
-                                                $total_debit = $cash_in + $bank_in;
-                                                
                                                 $cash_out = $current_asset->cash_books_table->sum('cash_out');
                                                 $bank_out = $current_asset->cash_books_table->sum('bank_out');
                                                 $total_credit = $cash_out + $bank_out;
                                                 
-                                                $total_current_asset = $total_debit + $total_credit;
+                                                $total_current_asset = $total_credit;
                                                 echo number_format($total_current_asset, 2);
                                                 $all_total_current_asset[] = $total_current_asset;
                                             @endphp
@@ -198,11 +188,7 @@
                                                 $bank_in = $equity->cash_books_table->sum('bank_in');
                                                 $total_debit = $cash_in + $bank_in;
                                                 
-                                                $cash_out = $equity->cash_books_table->sum('cash_out');
-                                                $bank_out = $equity->cash_books_table->sum('bank_out');
-                                                $total_credit = $cash_out + $bank_out;
-                                                
-                                                $total_equity = $total_credit - $total_debit;
+                                                $total_equity = $total_debit;
                                                 echo number_format($total_equity, 2);
                                                 $all_total_equity[] = $total_equity;
                                             @endphp
@@ -262,11 +248,7 @@
                                                 $bank_in = $liabilitie->cash_books_table->sum('bank_in');
                                                 $total_debit = $cash_in + $bank_in;
                                                 
-                                                $cash_out = $liabilitie->cash_books_table->sum('cash_out');
-                                                $bank_out = $liabilitie->cash_books_table->sum('bank_out');
-                                                $total_credit = $cash_out + $bank_out;
-                                                
-                                                $total_liabilitie = $total_credit - $total_debit;
+                                                $total_liabilitie = $total_debit;
                                                 echo number_format($total_liabilitie, 2);
                                                 $all_total_liabilitie[] = $total_liabilitie;
                                             @endphp
@@ -301,7 +283,6 @@
                             </tbody>
 
                         </table>
-
                     </div>
                 </div>
             </div>

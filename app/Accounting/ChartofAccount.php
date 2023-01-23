@@ -40,10 +40,8 @@ class ChartofAccount extends Model
 
 
     // Reporting
-
     public function cash_books_table()
     {
         return $this->hasMany(CashBook::class, 'account_code_id', 'id');
     }
-    
 }

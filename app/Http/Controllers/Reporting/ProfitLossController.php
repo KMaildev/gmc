@@ -67,6 +67,9 @@ class ProfitLossController extends Controller
                 $query->whereDate('cash_book_date', '<=', $end_date);
             }])->get();
 
+
+
+            
         return view('reporting.profit_loss.index', compact('revenues', 'cost_of_sales', 'other_incomes', 'operation_expenses', 'administration_expenses', 'marketing_expenses', 'finance_costs', 'start_date', 'end_date'));
     }
 }
