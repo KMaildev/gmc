@@ -102,6 +102,9 @@ class CashBookController extends Controller
         $cash_book->sale_type = $request->sale_type;
         $cash_book->principle_interest = $request->principle_interest;
         $cash_book->purchase_order_id = $request->purchase_order_id;
+        $cash_book->part_purchase_id = $request->part_purchase_id;
+        $cash_book->part_sale_invoice_id = $request->part_sale_invoice_id;
+        $cash_book->service_invoice_id = $request->service_invoice_id;
         $cash_book->user_id = auth()->user()->id;
         $cash_book->save();
         return redirect()->back()->with('success', 'Your processing has been completed.');

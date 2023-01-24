@@ -134,6 +134,7 @@ return array(
     'App\\Http\\Controllers\\Reporting\\CashTrialController' => $baseDir . '/app/Http/Controllers/Reporting/CashTrialController.php',
     'App\\Http\\Controllers\\Reporting\\JournalEntryController' => $baseDir . '/app/Http/Controllers/Reporting/JournalEntryController.php',
     'App\\Http\\Controllers\\Reporting\\ProfitLossController' => $baseDir . '/app/Http/Controllers/Reporting/ProfitLossController.php',
+    'App\\Http\\Controllers\\Reporting\\TrialController' => $baseDir . '/app/Http/Controllers/Reporting/TrialController.php',
     'App\\Http\\Controllers\\RoleController' => $baseDir . '/app/Http/Controllers/RoleController.php',
     'App\\Http\\Controllers\\SalesReturn\\SalesReturnController' => $baseDir . '/app/Http/Controllers/SalesReturn/SalesReturnController.php',
     'App\\Http\\Controllers\\SalesReturn\\SalesReturnItemController' => $baseDir . '/app/Http/Controllers/SalesReturn/SalesReturnItemController.php',

@@ -60,6 +60,21 @@
             {{ $cash_book->purchase_orders_table->purchase_no ?? '' }}
         </td>
 
+        {{-- SP Purchase	 --}}
+        <td style="text-align: center">
+            {{ $cash_book->part_purchases_table->invoice_no ?? '' }}
+        </td>
+
+        {{-- SP Sales Invoice --}}
+        <td style="text-align: center">
+            {{ $cash_book->part_sale_invoices_table->invoice_no ?? '' }}
+        </td>
+
+        {{-- Service Invoice --}}
+        <td style="text-align: center">
+            {{ $cash_book->service_invoice_table->invoice_no ?? '' }}
+        </td>
+
         <td style="text-align: center;">
             {{ $cash_book->chartof_account_table->coa_number ?? '' }}
         </td>

@@ -9,6 +9,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+
                     <table class="" style="margin-bottom: 2px; width: 100%;">
                         <thead>
                             <th style="color: white; background-color: #2e696e; text-align: center;">
@@ -142,8 +143,21 @@
                         </tbody>
                     </table>
 
+
                     <table class="" style="margin-bottom: 2px; width: 100%;">
                         <thead>
+                            <th style="color: white; background-color: #2e696e; text-align: center;">
+                                SP Purchase
+                            </th>
+
+                            <th style="color: white; background-color: #2e696e; text-align: center;">
+                                SP Sales Invoice
+                            </th>
+
+                            <th style="color: white; background-color: #2e696e; text-align: center;">
+                                Service Invoice
+                            </th>
+
                             <th style="color: white; background-color: #2e696e; text-align: center;">
                                 A/C Code
                             </th>
@@ -159,25 +173,48 @@
                             <th style="color: white; background-color: #2e696e; text-align: center;">
                                 Description
                             </th>
-
-                            <th style="color: white; background-color: #2e696e; text-align: center;">
-                                Cash AC
-                            </th>
-
-                            <th style="color: white; background-color: #2e696e; text-align: center;">
-                                Cash-In
-                            </th>
-
-                            <th style="color: white; background-color: #2e696e; text-align: center;">
-                                Cash-Out
-                            </th>
-
-                            <th style="color: white; background-color: #2e696e; text-align: center;">
-                                Balance
-                            </th>
                         </thead>
 
                         <tbody>
+                            <td>
+                                <select class="form-select form-select-sm" id="part_purchase_id">
+                                    <option value="">
+                                        --SP Purchase--
+                                    </option>
+                                    @foreach ($part_purchases as $part_purchase)
+                                        <option value="{{ $part_purchase->id }}">
+                                            {{ $part_purchase->invoice_no ?? '' }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </td>
+
+                            <td>
+                                <select class="form-select form-select-sm" id="part_sale_invoice_id">
+                                    <option value="">
+                                        --SP Sales Invoice--
+                                    </option>
+                                    @foreach ($part_sale_invoices as $part_sale_invoice)
+                                        <option value="{{ $part_sale_invoice->id }}">
+                                            {{ $part_sale_invoice->invoice_no ?? '' }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </td>
+
+                            <td>
+                                <select class="form-select form-select-sm" id="service_invoice_id">
+                                    <option value="">
+                                        --Service Invoice--
+                                    </option>
+                                    @foreach ($service_invoices as $service_invoice)
+                                        <option value="{{ $service_invoice->id }}">
+                                            {{ $service_invoice->invoice_no ?? '' }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </td>
+
                             <td>
                                 <select class="form-select form-select-sm" data-allow-clear="false"
                                     id="AccountCodeSelectQuick">
@@ -211,8 +248,42 @@
                                     <div class="invalid-feedback"> {{ $message }} </div>
                                 @enderror
                             </td>
+                        </tbody>
+                    </table>
 
 
+                    <table class="" style="margin-bottom: 2px; width: 100%;">
+                        <thead>
+                            <th style="color: white; background-color: #2e696e; text-align: center;">
+                                Cash AC
+                            </th>
+
+                            <th style="color: white; background-color: #2e696e; text-align: center;">
+                                Cash-In
+                            </th>
+
+                            <th style="color: white; background-color: #2e696e; text-align: center;">
+                                Cash-Out
+                            </th>
+
+                            <th style="color: white; background-color: #2e696e; text-align: center;">
+                                Bank AC
+                            </th>
+
+                            <th style="color: white; background-color: #2e696e; text-align: center;">
+                                Bank-In
+                            </th>
+
+                            <th style="color: white; background-color: #2e696e; text-align: center;">
+                                Bank-Out
+                            </th>
+
+                            <th style="color: white; background-color: #2e696e; text-align: center;">
+                                Bank Name
+                            </th>
+                        </thead>
+
+                        <tbody>
                             <td>
                                 <select class="form-select form-select-sm" data-allow-clear="false"
                                     id="CashAccountSelectQuick">
@@ -248,42 +319,6 @@
                                 @enderror
                             </td>
 
-                            <td></td>
-                        </tbody>
-                    </table>
-
-                    <table style="margin-bottom: 2px; width: 100%;">
-                        <thead>
-                            <th style="color: white; background-color: #2e696e; text-align: center;">
-                                Bank AC
-                            </th>
-
-                            <th style="color: white; background-color: #2e696e; text-align: center;">
-                                Bank-In
-                            </th>
-
-                            <th style="color: white; background-color: #2e696e; text-align: center;">
-                                Bank-Out
-                            </th>
-
-                            <th style="color: white; background-color: #2e696e; text-align: center;">
-                                Bank-Balance
-                            </th>
-
-                            <th style="color: white; background-color: #2e696e; text-align: center;">
-                                Deposit(Cash+Bank)
-                            </th>
-
-                            <th style="color: white; background-color: #2e696e; text-align: center;">
-                                Withdraw(Cash+Bank)
-                            </th>
-
-                            <th style="color: white; background-color: #2e696e; text-align: center;">
-                                Bank Name
-                            </th>
-                        </thead>
-
-                        <tbody>
                             <td>
                                 <select class="form-select form-select-sm" data-allow-clear="false"
                                     id="BankAccountSelectQuick">
@@ -319,10 +354,6 @@
                                 @enderror
                             </td>
 
-                            <td></td>
-                            <td></td>
-                            <td></td>
-
                             <td>
                                 <input type="text" class="form-control-custom input-text-center"
                                     id="bankNameQuick" />
@@ -330,6 +361,8 @@
 
                         </tbody>
                     </table>
+
+
                 </div>
 
                 <div class="modal-footer">
@@ -344,6 +377,10 @@
                 <input type="hidden" name="sales_invoice_id" id="SaleInvoiceIdValueQuick" value="0">
                 <input type="hidden" name="sale_type" id="SaleTypeValueQuick">
                 <input type="hidden" name="principle_interest" id="PrincipleAndInterestValueQuick">
+
+                <input type="hidden" name="part_purchase_id" id="part_purchaseID">
+                <input type="hidden" name="part_sale_invoice_id" id="part_sale_invoiceID">
+                <input type="hidden" name="service_invoice_id" id="service_invoiceID">
             </form>
         </div>
     </div>
@@ -481,8 +518,25 @@
             document.getElementById("PrincipleAndInterestValueQuick").value = $(this).val();
         });
     });
-</script>
 
+    $(document).ready(function() {
+        $('select[id="part_purchase_id"]').on('change', function() {
+            document.getElementById("part_purchaseID").value = $(this).val();
+        });
+    });
+
+    $(document).ready(function() {
+        $('select[id="part_sale_invoice_id"]').on('change', function() {
+            document.getElementById("part_sale_invoiceID").value = $(this).val();
+        });
+    });
+
+    $(document).ready(function() {
+        $('select[id="service_invoice_id"]').on('change', function() {
+            document.getElementById("service_invoiceID").value = $(this).val();
+        });
+    });
+</script>
 
 <script>
     $('.store_cashbook').submit(function(e) {
@@ -506,9 +560,10 @@
         const sale_type = form.find("input[name=sale_type]").val();
         const principle_interest = form.find("input[name=principle_interest]").val();
         const purchase_order_id = form.find("input[name=purchase_order_id]").val();
-        console.log(form)
-        console.log(month)
-        console.log(year)
+
+        const part_purchase_id = form.find("input[name=part_purchase_id]").val();
+        const part_sale_invoice_id = form.find("input[name=part_sale_invoice_id]").val();
+        const service_invoice_id = form.find("input[name=service_invoice_id]").val();
 
         if (cash_book_date == null || cash_book_date == "" || month == null || month == "" || year == null ||
             year == "") {
@@ -545,6 +600,9 @@
                 sale_type: sale_type,
                 rinciple_interest: principle_interest,
                 purchase_order_id: purchase_order_id,
+                part_purchase_id: part_purchase_id,
+                part_sale_invoice_id: part_sale_invoice_id,
+                service_invoice_id: service_invoice_id,
             },
             success: function(data) {
                 success_alert('Your processing has been completed.')

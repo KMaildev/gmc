@@ -93,6 +93,46 @@
             </select>
         </td>
 
+        {{-- SP Purchase --}}
+        <td>
+            <select class="select3 form-select form-select-sm" name="part_purchase_id">
+                <option value="">
+                    --SP Purchase--
+                </option>
+                @foreach ($part_purchases as $part_purchase)
+                    <option value="{{ $part_purchase->id }}">
+                        {{ $part_purchase->invoice_no ?? '' }}
+                    </option>
+                @endforeach
+            </select>
+        </td>
+
+        <td>
+            <select class="select3 form-select form-select-sm" name="part_sale_invoice_id">
+                <option value="">
+                    --SP Sales Invoice--
+                </option>
+                @foreach ($part_sale_invoices as $part_sale_invoice)
+                    <option value="{{ $part_sale_invoice->id }}">
+                        {{ $part_sale_invoice->invoice_no ?? '' }}
+                    </option>
+                @endforeach
+            </select>
+        </td>
+
+        <td>
+            <select class="select3 form-select form-select-sm" name="service_invoice_id">
+                <option value="">
+                    --Service Invoice--
+                </option>
+                @foreach ($service_invoices as $service_invoice)
+                    <option value="{{ $service_invoice->id }}">
+                        {{ $service_invoice->invoice_no ?? '' }}
+                    </option>
+                @endforeach
+            </select>
+        </td>
+
         <td>
             <select class="select2 form-select form-select-sm" data-allow-clear="false" id="AccountCodeSelect">
                 <option value="">--Please Select A/C Code --</option>
@@ -208,7 +248,9 @@
         </td>
 
         <td>
-            <button type="submit" class="btn btn-info btn-sm" style="width: 100%;">Save</button>
+            <button type="submit" class="btn btn-info btn-sm" style="width: 100%;">
+                Save
+            </button>
         </td>
     </tr>
 

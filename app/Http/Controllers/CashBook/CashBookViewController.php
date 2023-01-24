@@ -9,6 +9,9 @@ use App\Http\Requests\StoreCashBook;
 use App\Http\Requests\UpdateCashBookVeiwUpdate;
 use App\Models\PurchaseOrder;
 use App\Models\SalesInvoices;
+use App\PartPurchase;
+use App\PartSaleInvoice;
+use App\ServiceInvoice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -25,8 +28,11 @@ class CashBookViewController extends Controller
         $sales_invoices = SalesInvoices::all();
         $purchase_orders = PurchaseOrder::all();
 
-        $cash_book_form_status = 'is_create';
+        $part_purchases = PartPurchase::all();
+        $part_sale_invoices = PartSaleInvoice::all();
+        $service_invoices = ServiceInvoice::all();
 
+        $cash_book_form_status = 'is_create';
         // Closing Clash and Bank Balance
         $from_date = '2019-06-01';
         $beforeFirstDays = DB::table('cash_books')
@@ -47,7 +53,7 @@ class CashBookViewController extends Controller
             return response()->json(['html' => $view]);
         }
 
-        return view('cashbook_view.index', compact('cash_books', 'beforeFirstDays', 'chartof_accounts', 'cash_book_form_status', 'sales_invoices', 'purchase_orders'));
+        return view('cashbook_view.index', compact('cash_books', 'beforeFirstDays', 'chartof_accounts', 'cash_book_form_status', 'sales_invoices', 'purchase_orders', 'part_purchases', 'part_sale_invoices', 'service_invoices'));
     }
 
     /**
@@ -87,6 +93,9 @@ class CashBookViewController extends Controller
         $cash_book->sale_type = $request->sale_type;
         $cash_book->principle_interest = $request->principle_interest;
         $cash_book->purchase_order_id = $request->purchase_order_id;
+        $cash_book->part_purchase_id = $request->part_purchase_id;
+        $cash_book->part_sale_invoice_id = $request->part_sale_invoice_id;
+        $cash_book->service_invoice_id = $request->service_invoice_id;
         $cash_book->user_id = auth()->user()->id;
         $cash_book->save();
         return json_encode(array(
@@ -118,7 +127,11 @@ class CashBookViewController extends Controller
         $purchase_orders = PurchaseOrder::all();
         $edit_cash_book_data = CashBook::findOrFail($id);
 
-        $view = view('cashbook_view.form.edit_render_form', compact('chartof_accounts', 'sales_invoices', 'purchase_orders', 'edit_cash_book_data'))->render();
+        $part_purchases = PartPurchase::all();
+        $part_sale_invoices = PartSaleInvoice::all();
+        $service_invoices = ServiceInvoice::all();
+
+        $view = view('cashbook_view.form.edit_render_form', compact('chartof_accounts', 'sales_invoices', 'purchase_orders', 'edit_cash_book_data', 'part_purchases', 'part_sale_invoices', 'service_invoices'))->render();
         return response()->json(['html' => $view]);
     }
 
@@ -151,6 +164,9 @@ class CashBookViewController extends Controller
         $cash_book->sale_type = $request->sale_type;
         $cash_book->principle_interest = $request->principle_interest;
         $cash_book->purchase_order_id = $request->purchase_order_id;
+        $cash_book->part_purchase_id = $request->part_purchase_id;
+        $cash_book->part_sale_invoice_id = $request->part_sale_invoice_id;
+        $cash_book->service_invoice_id = $request->service_invoice_id;
         $cash_book->user_id = auth()->user()->id;
         $cash_book->update();
         return json_encode(array(

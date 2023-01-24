@@ -6,7 +6,7 @@
                 <div class="card-body">
                     <div class="card-title header-elements">
                         <h5 class="m-0 me-2">
-                            Cashbook 
+                            Cashbook
                         </h5>
                         <div class="card-title-elements ms-auto">
                             <div class="card-header-elements ms-auto">
@@ -14,7 +14,7 @@
                             </div>
 
                             <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#quickEntryModal">
-                                Quick Entry
+                                Create
                             </button>
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                 ])
 
                 {{-- onscroll="scrollLoadData()" --}}
-                <div class="table-responsive text-nowrap rowheaders table-scroll outer-wrapper" onscroll="scrollLoadData()">
+                <div class="table-responsive text-nowrap rowheaders table-scroll outer-wrapper">
                     <table class="table-bordered main-table py-5" style="margin-bottom: 1px !important;"
                         id="tbl_exporttable_to_xls">
                         @include('cashbook_view.table_header')
@@ -89,7 +89,7 @@
     var page = 1;
 
     function scrollLoadData() {
-        page += 20;
+        page += 2;
         loadMoreData(page);
     }
 

@@ -6,6 +6,9 @@ use App\Models\PurchaseOrder;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
 use App\Models\SalesInvoices;
+use App\PartPurchase;
+use App\PartSaleInvoice;
+use App\ServiceInvoice;
 use App\User;
 
 class CashBook extends Model
@@ -47,5 +50,21 @@ class CashBook extends Model
     public function purchase_orders_table()
     {
         return $this->belongsTo(PurchaseOrder::class, 'purchase_order_id', 'id');
+    }
+
+
+    public function part_purchases_table()
+    {
+        return $this->belongsTo(PartPurchase::class, 'part_purchase_id', 'id');
+    }
+
+    public function part_sale_invoices_table()
+    {
+        return $this->belongsTo(PartSaleInvoice::class, 'part_sale_invoice_id', 'id');
+    }
+
+    public function service_invoice_table()
+    {
+        return $this->belongsTo(ServiceInvoice::class, 'service_invoice_id', 'id');
     }
 }

@@ -749,6 +749,7 @@ class ComposerStaticInit47c02bcb897b27c6c7e40e39684ca80a
         'App\\Http\\Controllers\\Reporting\\CashTrialController' => __DIR__ . '/../..' . '/app/Http/Controllers/Reporting/CashTrialController.php',
         'App\\Http\\Controllers\\Reporting\\JournalEntryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Reporting/JournalEntryController.php',
         'App\\Http\\Controllers\\Reporting\\ProfitLossController' => __DIR__ . '/../..' . '/app/Http/Controllers/Reporting/ProfitLossController.php',
+        'App\\Http\\Controllers\\Reporting\\TrialController' => __DIR__ . '/../..' . '/app/Http/Controllers/Reporting/TrialController.php',
         'App\\Http\\Controllers\\RoleController' => __DIR__ . '/../..' . '/app/Http/Controllers/RoleController.php',
         'App\\Http\\Controllers\\SalesReturn\\SalesReturnController' => __DIR__ . '/../..' . '/app/Http/Controllers/SalesReturn/SalesReturnController.php',
         'App\\Http\\Controllers\\SalesReturn\\SalesReturnItemController' => __DIR__ . '/../..' . '/app/Http/Controllers/SalesReturn/SalesReturnItemController.php',

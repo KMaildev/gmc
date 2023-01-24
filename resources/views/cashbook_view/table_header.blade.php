@@ -36,6 +36,18 @@
     </th>
 
     <th style="color: white; background-color: #2e696e; text-align: center;">
+        SP Purchase
+    </th>
+
+    <th style="color: white; background-color: #2e696e; text-align: center;">
+        SP Sales Invoice
+    </th>
+
+    <th style="color: white; background-color: #2e696e; text-align: center;">
+        Service Invoice
+    </th>
+
+    <th style="color: white; background-color: #2e696e; text-align: center;">
         A/C Code
     </th>
 
